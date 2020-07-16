@@ -28,8 +28,11 @@ class activityController extends Controller
         ];
     }
     public function show($user_id){
-        $data = ModelActivity::where('user_id',$user_id)->orderBy('created_at', 'DESC')->take(50);
-        return response ($data,compact('data'));
+        $data = ModelActivity::where('user_id',$user_id)->orderBy('created_at', 'DESC')->take(50)->get();
+        return [
+            'response' => '200',
+            'data'     => $data,
+        ];
     }
 
 
